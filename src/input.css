@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none !important;
+}
+
+@layer base {
+    html {
+        font-family: Inter, system-ui, sans-serif;
+        color: #333333;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        color: #000000;
+    }
+}
+
+@layer utilities {
+    @keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .fadeInRight {
+        overflow-x: hidden;
+        animation: fadeInRight 1.5s;
+    }
+    @keyframes fadeInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .fadeInLeft {
+        overflow-x: hidden;
+        animation: fadeInRight 1.5s;
+    }
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .fadeInDown {
+        overflow-y: hidden;
+        animation: fadeInDown 1.5s;
+    }
+    @keyframes scale {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    .scale {
+        animation: scale 1s;
+    }
+    @media (prefers-reduced-motion) {
+        .fadeInRight,
+        .fadeInLeft,
+        fadeInDown
+        .scale {
+            animation: none;
+        }
+    }
+}
