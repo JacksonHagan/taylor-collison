@@ -20,7 +20,7 @@
 
 </head>
 <body x-cloak class="antialiased bg-gray-50 overflow-x-hidden">
-<nav x-data="{ open: false, scrolledFromTop: false }"
+<nav x-data="{ open: false, scrolledFromTop: false, subMenuOpen: false }"
      x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
      @scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
      :class="[open ? 'h-screen lg:h-auto' : '', open || scrolledFromTop ? 'bg-yellow-900' : 'bg-transparent']"
@@ -29,17 +29,36 @@
         <div class="flex h-20 items-center justify-between">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <img class="block h-8 w-auto lg:hidden"
-                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-                    <img class="hidden h-8 w-auto lg:block"
-                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+                    <img src="images/logo-white.png" alt="" class="h-[29px] w-[201px]">
                 </div>
             </div>
             <div class="hidden sm:ml-6 lg:block">
                 <div class="flex space-x-12">
-                    <a href="#" class="text-white text-sm">
-                        Personal Investors
-                    </a>
+                    <div class="relative group" @mouseenter="subMenuOpen = true" @mouseleave= "subMenuOpen = false">
+                        <a href="#" class="text-white text-sm">
+                            Personal Investors
+                        </a>
+                        <div class="hidden group-hover:block fadeIn absolute pt-6 w-max text-white">
+                            <ul class="space-y-2 text-sm">
+                                <li>
+                                    Services
+                                </li>
+                                <li>
+                                    Taylor Collison Online
+                                </li>
+                                <li>
+                                    Portfolio Management & CGT
+                                </li>
+                                <li>
+                                    Meet The Team
+                                </li>
+                                <li>
+                                    Taylor Collison Online
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <a href="#" class="text-white text-sm">
                         Corporate
                     </a>
@@ -92,6 +111,9 @@
         </div>
     </div>
 
+    <div x-show="subMenuOpen" class="w-full h-[9.5rem]">
+        <div class="text-white"></div>
+    </div>
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="lg:hidden" id="mobile-menu" x-show="open">
         <div class="space-y-1 px-10 pt-2 pb-3">
@@ -178,6 +200,8 @@ transform: matrix(-1, 0, 0, 1, 0, 0);"></div>
 </div>
 
 
+
+
 <div class="container my-14 sm:my-44">
     <div class="relative grid lg:block gap-y-14">
         <div class="relative order-2 -mx-4">
@@ -193,7 +217,7 @@ transform: matrix(-1, 0, 0, 1, 0, 0);"></div>
         </div>
 
         <div class="mx-auto grid max-w-7xl lg:grid-cols-2 order-1">
-            <div  x-data="{ shown: false }" x-intersect.half.once="shown = true" :class="shown ? 'fadeInLeft' : 'opacity-0' " class="lg:col-start-1 pr-8">
+            <div  x-data="{ shown: false }" x-intersect.half.once="shown = true" :class="shown ? 'fadeInRight' : 'opacity-0' " class="lg:col-start-1 md:pr-8">
                 <div class="max-w-2xl lg:max-w-xl">
                     <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl font-garamond">Personal
                         Investors</h2>
@@ -232,12 +256,13 @@ transform: matrix(-1, 0, 0, 1, 0, 0);"></div>
                             </dd>
                         </div>
                     </dl>
-                    <div :class="{ 'fadeInLeft': shown }" class="flex justify-center lg:block mt-16 sm:mt-20 xl:mt-16">
+
+                    <div class="flex justify-center lg:block mt-16 sm:mt-20 xl:mt-16">
                         <a href="#"
                            class="border border-yellow-600 text-yellow-600 px-7 py-3.5 font-semibold text-white hover:hover-yellow-700 inline-flex items-center">
                             Learn more
                             <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 stroke-width="2" stroke="currentColor">
+                                 stroke-width="2.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                       d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
                             </svg>
@@ -249,38 +274,202 @@ transform: matrix(-1, 0, 0, 1, 0, 0);"></div>
     </div>
 </div>
 
+
+
+
+
+
+<div class="container my-14 sm:my-44">
+    <div class="relative grid lg:block gap-y-14">
+        <div class="relative order-2 -mx-4">
+            <div class="z-10 bg-gray-50 lg:absolute lg:inset-y-0 lg:left-0">
+                <div class="aspect-[78/95]">
+                    <img class="w-full object-cover w-full lg:w-[468px] h-full"
+                         src="images/image778.png"
+                         alt="">
+                </div>
+            </div>
+            <div class="hidden lg:block lg:absolute border border-yellow-500 w-[468px] h-[570px] lg:left-0 transform -translate-x-3.5 -translate-y-3.5">
+            </div>
+        </div>
+
+        <div class="mx-auto grid max-w-7xl lg:grid-cols-2 order-1">
+
+            <div>
+            </div>
+            <div  x-data="{ shown: false }" x-intersect.half.once="shown = true" :class="shown ? 'fadeInLeft' : 'opacity-0' " class="md:pr-8">
+                <div class="max-w-2xl lg:max-w-xl">
+                    <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl font-garamond">
+                        Corporate
+                    </h2>
+                    <p class="mt-6 text-lg leading-8">
+                        Full service stockbroking and advisory services from our dedicated advisor team and some other
+                        words to make this span a larger section. Here is another sentence for this section to span
+                        further lines down the page. Here is another sentence for this section to span further lines
+                        down the page.
+                    </p>
+                    <dl  class=" mt-16 grid max-w-xl grid-cols-2 gap-8 sm:mt-20 xl:mt-16">
+                        <div class="flex flex-col gap-y-1">
+                            <dt class="leading-6">Years</dt>
+                            <dd class="order-first text-4xl font-semibold tracking-tight font-garamond text-black">
+                                70+
+                            </dd>
+                        </div>
+
+                        <div class="flex flex-col gap-y-1">
+                            <dt class="leading-6">Processed</dt>
+                            <dd class="order-first text-4xl font-semibold tracking-tight font-garamond text-black">
+                                $40
+                            </dd>
+                        </div>
+
+                        <div class="flex flex-col gap-y-1">
+                            <dt class="leading-6">Transactions</dt>
+                            <dd class="order-first text-4xl font-semibold tracking-tight font-garamond text-black">
+                                57k
+                            </dd>
+                        </div>
+
+                        <div class="flex flex-col gap-y-1">
+                            <dt class="leading-6">Locations</dt>
+                            <dd class="order-first text-4xl font-semibold tracking-tight font-garamond text-black">
+                                2
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <div class="flex justify-center lg:block mt-16 sm:mt-20 xl:mt-16">
+                        <a href="#"
+                           class="border border-yellow-600 text-yellow-600 px-7 py-3.5 font-semibold text-white hover:hover-yellow-700 inline-flex items-center">
+                            Learn more
+                            <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="container my-14 sm:my-44">
+    <div class="relative grid lg:block gap-y-14">
+        <div class="hidden md:block relative order-2 -mx-4">
+            <div class="z-10 bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0">
+                <div class="aspect-[78/95]">
+                    <img class="w-full object-cover w-full lg:w-[468px] h-full"
+                         src="images/image776.png"
+                         alt="">
+                </div>
+            </div>
+            <div class="hidden lg:block lg:absolute border border-yellow-500 w-[468px] h-[570px] lg:right-0 transform -translate-x-3.5 -translate-y-3.5">
+            </div>
+        </div>
+
+        <div class="mx-auto grid max-w-7xl lg:grid-cols-2 order-1">
+            <div x-data="{ shown: false }" x-intersect.half.once="shown = true" :class="shown ? 'fadeInRight' : 'opacity-0' " class="lg:col-start-1 md:pr-8">
+                <div class="max-w-2xl lg:max-w-xl">
+                    <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl font-garamond">Institutional & Research</h2>
+                    <p class="mt-6 text-lg leading-8">
+                        Full service stockbroking and advisory services from our dedicated advisor team and some other
+                        words to make this span a larger section. Here is another sentence for this section to span
+                        further lines down the page. Here is another sentence for this section to span further lines
+                        down the page.
+                    </p>
+                    <dl  class=" mt-16 grid max-w-xl grid-cols-2 gap-8 sm:mt-20 xl:mt-16">
+                        <div class="flex flex-col gap-y-1">
+                            <dt class="leading-6">Years</dt>
+                            <dd class="order-first text-4xl font-semibold tracking-tight font-garamond text-black">
+                                70+
+                            </dd>
+                        </div>
+
+                        <div class="flex flex-col gap-y-1">
+                            <dt class="leading-6">Processed</dt>
+                            <dd class="order-first text-4xl font-semibold tracking-tight font-garamond text-black">
+                                $40
+                            </dd>
+                        </div>
+
+                        <div class="flex flex-col gap-y-1">
+                            <dt class="leading-6">Transactions</dt>
+                            <dd class="order-first text-4xl font-semibold tracking-tight font-garamond text-black">
+                                57k
+                            </dd>
+                        </div>
+
+                        <div class="flex flex-col gap-y-1">
+                            <dt class="leading-6">Locations</dt>
+                            <dd class="order-first text-4xl font-semibold tracking-tight font-garamond text-black">
+                                2
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <div class="flex justify-center lg:block mt-16 sm:mt-20 xl:mt-16">
+                        <a href="#"
+                           class="border border-yellow-600 text-yellow-600 px-7 py-3.5 font-semibold text-white hover:hover-yellow-700 inline-flex items-center">
+                            Learn more
+                            <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <div class="relative bg-white">
-    <div class="relative h-80 overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/2 lg:w-1/2">
+    <div class="relative z-10 aspect-[78/95] overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/2 lg:w-1/2">
         <img class="h-full w-full object-cover" src="images/sydney-4337418.png" alt="">
     </div>
-    <div class="container relative py-12 sm:py-32 lg:py-40">
+    <div v x-data="{ shown: false }" x-intersect.half.once="shown = true" :class="shown ? 'fadeInLeft' : 'opacity-0' "  class="container relative py-12 sm:py-32 lg:py-40">
         <div class="pr-6 pl-6 md:ml-auto md:w-1/2 md:pl-16 lg:w-1/2 lg:pl-24 lg:pr-0 xl:pl-32">
             <h2 class="mt-2 text-4xl font-bold tracking-tight sm:text-4xl font-garamond border-b border-yellow-600 w-max">
                 Our Mission</h2>
-            <p class="mt-6 text-base leading-7">
+            <p class="mt-8 text-base leading-7">
                 Specialising in institutional private broking and portfolio management services Taylor Collison’s
                 professional team of client advisers is dedicated to helping investors build a portfolio that best suits
                 their individual investment requirements.
             </p>
 
-            <p class="mt-6 text-base leading-7">
+            <p class="mt-8 text-base leading-7">
                 Our business is founded on integrity, client confidentiality, service delivery and the strength and
                 quality of our relationships. Taylor Collison takes pride in its total commitment to wealth creation,
                 offering full service to clients.
             </p>
 
-            <p class="mt-6 text-base leading-7">
+            <p class="mt-8 text-base leading-7">
                 Our primary allegiance is to our clients, to ensure they recieve objective advice that suits their
                 particular investment objectives and circumstances ”
             </p>
 
-            <div class="mt-8">
+            <div class="mt-12">
                 <a href="#"
                    class="border border-yellow-600 text-yellow-600 px-7 py-3.5 font-semibold text-white hover:hover-yellow-700 inline-flex items-center">
                     Learn more
                     <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                         stroke-width="2" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                         stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
                     </svg>
                 </a>
             </div>
@@ -289,10 +478,14 @@ transform: matrix(-1, 0, 0, 1, 0, 0);"></div>
 </div>
 
 
+
+
+
+
 <footer class="bg-black" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto max-w-7xl px-6 pb-8 py-20 sm:py-24 lg:px-8 lg:py-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 xl:gap-12 gap-y-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-y-12  xl:gap-14">
             <div>
                 <!--                        <h3 class="text-sm font-semibold leading-6 text-white">Solutions</h3>-->
                 <ul role="list" class="space-y-3">

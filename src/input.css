@@ -18,19 +18,13 @@
 }
 
 @layer utilities {
-    @keyframes fadeInRight {
-        0% {
-            opacity: 0;
-            transform: translateX(50%);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
     .fadeInRight {
         overflow-x: hidden;
         animation: fadeInRight 1.5s;
+    }
+    .fadeInLeft {
+        overflow-x: hidden;
+        animation: fadeInLeft 1.5s;
     }
     @keyframes fadeInLeft {
         0% {
@@ -42,7 +36,21 @@
             transform: translateX(0);
         }
     }
+    @keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
     .fadeInLeft {
+        overflow-x: hidden;
+        animation: fadeInLeft 1.5s;
+    }
+    .fadeInRight {
         overflow-x: hidden;
         animation: fadeInRight 1.5s;
     }
@@ -60,6 +68,18 @@
         overflow-y: hidden;
         animation: fadeInDown 1.5s;
     }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    .fadeIn {
+        overflow-y: hidden;
+        animation: fadeIn 1s;
+    }
     @keyframes scale {
         0% {
             opacity: 0;
@@ -74,9 +94,10 @@
         animation: scale 1s;
     }
     @media (prefers-reduced-motion) {
+        .fadeIn
         .fadeInRight,
         .fadeInLeft,
-        fadeInDown
+        .fadeInDown
         .scale {
             animation: none;
         }
