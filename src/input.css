@@ -9,10 +9,14 @@
 @layer base {
     html {
         font-family: Inter, system-ui, sans-serif;
+        scroll-behavior: smooth;
         color: #333333;
+        letter-spacing: 0.015em;
+        line-height: 1.75rem;
     }
 
     h1, h2, h3, h4, h5, h6{
+        letter-spacing: 0.02em;
         color: #000000;
     }
 }

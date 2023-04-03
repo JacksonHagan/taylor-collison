@@ -10,19 +10,22 @@ module.exports = {
                 'yellow': {
                     600: '#C5A901',
                     700: '#8C7800',
-
                     900: '#111111',
                 },
             },
             fontFamily: {
-                'garamond': ['Garamond', 'serif']
+                'garamond': ['Garamond Local', 'Garamond', 'serif']
             },
             fontSize: {
+                'base': ['1rem', {
+                    lineHeight: '1.75rem;',
+                }],
+                'lg': ['1.125rem', {
+                    lineHeight: '1.75rem;',
+                }],
                 '4.5xl': ['2.5rem', {
                     lineHeight: '2.5rem;',
                 }],
-
-
                 '2.5xl': ['1.75rem', {
                     lineHeight: '2rem;',
                 }],

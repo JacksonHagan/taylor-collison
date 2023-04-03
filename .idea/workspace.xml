@@ -20,16 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c57f4e6a-5f85-416a-be0d-8ef5cbdf2ee4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/images/image753-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/images/image776.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/images/image778.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/images/image779.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/images/logo-black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/images/logo-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/personal-investing.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/fonts/Garamond Bold font.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/fonts/Garamond Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/fonts/Garamond.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/logo-white.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/logo-white.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/personal-investing.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/personal-investing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/input.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
@@ -68,11 +66,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\Laravel\taylor-collison\docs\fonts" />
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\docs\images" />
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\dist\images" />
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\dist" />
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\src" />
-      <recent name="D:\xampp\htdocs\Laravel\taylor-collison\src\css" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -95,7 +93,10 @@
       <workItem from="1679293287836" duration="828000" />
       <workItem from="1679378391208" duration="7584000" />
       <workItem from="1679824989698" duration="6244000" />
-      <workItem from="1679891881488" duration="79000" />
+      <workItem from="1679891881488" duration="1434000" />
+      <workItem from="1680340337348" duration="593000" />
+      <workItem from="1680399158285" duration="4470000" />
+      <workItem from="1680508277468" duration="10250000" />
     </task>
     <servers />
   </component>
@@ -115,27 +116,27 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="677" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1678874717438">
+    <state x="677" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1680520734112">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="677" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1678874717438" />
+    <state x="677" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1680520734112" />
     <state x="718" y="390" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1678886724090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="718" y="390" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1678886724090" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1679833184236">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1680424178000">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1678948802711" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1680424178000" />
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1679833184236" />
     <state x="2587" y="253" width="585" height="534" key="find.popup" timestamp="1679833106852">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2587" y="253" width="585" height="534" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1679833106852" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1679836620577">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1680526634200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1679836620577" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1680526634200" />
     <state x="2536" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1679388998156" />
     <state x="2543" y="225" key="search.everywhere.popup" timestamp="1679053839601">
       <screen x="1920" y="0" width="1920" height="1040" />
