@@ -20,16 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c57f4e6a-5f85-416a-be0d-8ef5cbdf2ee4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/fonts/Garamond Bold font.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/fonts/Garamond Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/fonts/Garamond.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/images/logo-white.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/logo-white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/fonts/Garamond Bold font.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/docs/fonts/garamond-bold.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/fonts/Garamond Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/docs/fonts/garamond-regular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/fonts/Garamond.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/docs/fonts/garamond.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/personal-investing.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/personal-investing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/input.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/input.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +93,9 @@
       <workItem from="1679891881488" duration="1434000" />
       <workItem from="1680340337348" duration="593000" />
       <workItem from="1680399158285" duration="4470000" />
-      <workItem from="1680508277468" duration="10250000" />
+      <workItem from="1680508277468" duration="10663000" />
+      <workItem from="1680601404483" duration="3699000" />
+      <workItem from="1680693965723" duration="506000" />
     </task>
     <servers />
   </component>
@@ -116,10 +115,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="677" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1680520734112">
+    <state x="677" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1680608127475">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="677" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1680520734112" />
+    <state x="677" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1680608127475" />
     <state x="718" y="390" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1678886724090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
