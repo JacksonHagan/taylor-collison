@@ -12,6 +12,9 @@ module.exports = {
                     700: '#8C7800',
                     900: '#090909',
                 },
+                'lighter-grey': '#F9F9F9',
+                'grey-light': '#929292',
+                'grey': '#4B4B4B',
             },
             fontFamily: {
                 'garamond': ['Garamond Local', 'Garamond', 'serif']
