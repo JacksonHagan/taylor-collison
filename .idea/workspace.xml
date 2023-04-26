@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -24,7 +27,8 @@
       <change beforePath="$PROJECT_DIR$/docs/index-nav-white.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-nav-white.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,11 +42,18 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="2N2sohX7o9aIATz6Iw2jZhibBA3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -56,19 +67,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/docs" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettier.files.pattern" value="{**/*,*}.{js,ts,jsx,tsx,php,vue,html}" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="D:\xampp\htdocs\Laravel\taylor-collison\node_modules\prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="run.prettier.on.save" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\Laravel\taylor-collison\docs" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\docs\fonts" />
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\docs\images" />
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\dist\images" />
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\dist" />
       <recent name="D:\xampp\htdocs\Laravel\taylor-collison\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\Laravel\taylor-collison\docs" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -101,7 +116,8 @@
       <workItem from="1681276792163" duration="3035000" />
       <workItem from="1681652803079" duration="3080000" />
       <workItem from="1681908803971" duration="585000" />
-      <workItem from="1682425582978" duration="5183000" />
+      <workItem from="1682425582978" duration="5670000" />
+      <workItem from="1682512120902" duration="2810000" />
     </task>
     <servers />
   </component>
@@ -129,19 +145,27 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="718" y="390" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1678886724090" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1681653102077">
+    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1682515115062">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1681653102077" />
+    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1682515115062" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1682515293412">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1682515293412" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1682513352505">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1682513352505" />
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1679833184236" />
     <state x="2587" y="253" width="585" height="534" key="find.popup" timestamp="1679833106852">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2587" y="253" width="585" height="534" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1679833106852" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1680526634200">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1682515201262">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1680526634200" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1682515201262" />
     <state x="2536" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1679388998156" />
     <state x="2543" y="225" key="search.everywhere.popup" timestamp="1679053839601">
       <screen x="1920" y="0" width="1920" height="1040" />

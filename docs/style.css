@@ -1274,6 +1274,10 @@ h1, h2, h3, h4, h5, h6{
   font-weight: 600;
 }
 
+.font-normal {
+  font-weight: 400;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -1309,6 +1313,16 @@ h1, h2, h3, h4, h5, h6{
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
+.text-grey {
+  --tw-text-opacity: 1;
+  color: rgb(75 75 75 / var(--tw-text-opacity));
+}
+
+.text-grey-light {
+  --tw-text-opacity: 1;
+  color: rgb(146 146 146 / var(--tw-text-opacity));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1317,16 +1331,6 @@ h1, h2, h3, h4, h5, h6{
 .text-yellow-600 {
   --tw-text-opacity: 1;
   color: rgb(197 169 1 / var(--tw-text-opacity));
-}
-
-.text-grey-light {
-  --tw-text-opacity: 1;
-  color: rgb(146 146 146 / var(--tw-text-opacity));
-}
-
-.text-grey {
-  --tw-text-opacity: 1;
-  color: rgb(75 75 75 / var(--tw-text-opacity));
 }
 
 .text-opacity-80 {
@@ -1496,6 +1500,11 @@ h1, h2, h3, h4, h5, h6{
   background-color: rgb(140 120 0 / var(--tw-bg-opacity));
 }
 
+.hover\:text-grey:hover {
+  --tw-text-opacity: 1;
+  color: rgb(75 75 75 / var(--tw-text-opacity));
+}
+
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1504,11 +1513,6 @@ h1, h2, h3, h4, h5, h6{
 .hover\:text-yellow-700:hover {
   --tw-text-opacity: 1;
   color: rgb(140 120 0 / var(--tw-text-opacity));
-}
-
-.hover\:text-grey:hover {
-  --tw-text-opacity: 1;
-  color: rgb(75 75 75 / var(--tw-text-opacity));
 }
 
 .focus\:outline-0:focus {

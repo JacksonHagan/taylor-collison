@@ -1,792 +1,1010 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taylor Collison</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
-          rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-        @font-face {
-            font-family: "Garamond Local";
-            src: url("fonts/garamond-regular.ttf") format("truetype");
-            font-weight: 400;
-            font-style: normal;
-        }
+      @font-face {
+        font-family: "Garamond Local";
+        src: url("fonts/garamond-regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
 
-        @font-face {
-            font-family: "Garamond Local";
-            src: url("fonts/garamond-bold.ttf") format("truetype");
-            font-weight: 600;
-            font-style: normal;
-        }
+      @font-face {
+        font-family: "Garamond Local";
+        src: url("fonts/garamond-bold.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+      }
     </style>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
     <!-- Alpine Plugins -->
     <script src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Alpine Core -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-</head>
-<body x-cloak class="antialiased bg-gray-50 overflow-x-hidden">
-<div x-data="{ searchOpen: false, searchInput: '' }" x-on:keydown.escape="searchInput = ''">
-    <div x-show="searchOpen" class="fixed bg-opacity-50 w-full h-full fixed z-40"
-         x-transition:enter="transition ease-out duration-200 transform"
-         x-transition:enter-start="opacity-0"
-         x-transition:enter-end="opacity-100"
-         x-transition:leave="transition ease-in duration-200 transform"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0">
-        <div x-cloak @click="searchOpen = false" class="fixed inset-0 transition-opacity bg-black bg-opacity-50" aria-hidden="true">
-        </div>
+  </head>
+  <body x-cloak class="overflow-x-hidden bg-gray-50 antialiased">
+    <div
+      x-data="{ searchOpen: false, searchInput: '' }"
+      x-on:keydown.escape="searchInput = ''"
+    >
+      <div
+        x-show="searchOpen"
+        class="fixed fixed z-40 h-full w-full bg-opacity-50"
+        x-transition:enter="transition ease-out duration-200 transform"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200 transform"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div
+          x-cloak
+          @click="searchOpen = false"
+          class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+          aria-hidden="true"
+        ></div>
         <div class="container relative z-50">
-            <div class="flex h-20 items-center justify-between">
-                <div class="w-full cursor-text bg-white rounded-md flex items-center"
-                     @click="$refs.searchInput.focus()">
-                    <div class="px-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                        </svg>
-                    </div>
-                    <input id="search" placeholder="search" x-ref="searchInput" type="text" x-model="searchInput" class="py-1.5 rounded-md focus:outline-0 w-full">
-                </div>
+          <div class="flex h-20 items-center justify-between">
+            <div
+              class="flex w-full cursor-text items-center rounded-md bg-white"
+              @click="$refs.searchInput.focus()"
+            >
+              <div class="px-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+              </div>
+              <input
+                id="search"
+                placeholder="search"
+                x-ref="searchInput"
+                type="text"
+                x-model="searchInput"
+                class="w-full rounded-md py-1.5 focus:outline-0"
+              />
             </div>
+          </div>
 
-            <div x-show="searchInput" class="bg-white rounded-md p-4">
-                <div>
-                    Searching for <span class="font-medium text-black" x-text="searchInput"></span>
-                </div>
+          <div x-show="searchInput" class="rounded-md bg-white p-4">
+            <div>
+              Searching for
+              <span class="font-medium text-black" x-text="searchInput"></span>
             </div>
+          </div>
         </div>
-    </div>
-    <nav x-data="{ open: false, scrolledFromTop: false, subMenuOpen: false, hoverNav: false }"
-         x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
-         @scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
-         @mouseenter="hoverNav = true"
-         @mouseleave="hoverNav = false"
-         :class="[open ? 'h-screen lg:h-auto' : '', open || scrolledFromTop || hoverNav || searchOpen ? 'bg-white text-black' : 'bg-transparent text-white']"
-         class="fixed z-30 w-full transition-all duration-200">
+      </div>
+
+      <nav
+        x-data="{ open: false, scrolledFromTop: false, subMenuOpen: false, hoverNav: false }"
+        x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+        @scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+        @mouseenter="hoverNav = true"
+        @mouseleave="hoverNav = false"
+        :class="[open ? 'h-screen lg:h-auto' : '', open || scrolledFromTop || hoverNav || searchOpen ? 'bg-white text-black' : 'bg-transparent text-white']"
+        class="fixed z-30 w-full transition-all duration-200"
+      >
         <div class="container">
-            <div class="flex h-20 items-center justify-between">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <img :class="[open || scrolledFromTop || hoverNav ? 'hidden' : 'block']"
-                             src="images/logo-white.png" alt="" class="h-[29px] w-[201px]">
-                        <img :class="[open || scrolledFromTop || hoverNav ? 'block' : 'hidden']"
-                             src="images/logo-black.png" alt="" class="h-[29px] w-[201px]">
-
-                    </div>
-                </div>
-                <div class="hidden sm:ml-6 lg:block">
-                    <div class="flex items-center space-x-12">
-                        <div class="relative group" @mouseenter="subMenuOpen = true" @mouseleave="subMenuOpen = false">
-                            <a href="#" class="text-sm">
-                                Personal Investors
-                            </a>
-                            <div class="hidden group-hover:block fadeIn absolute pt-6 w-max">
-                                <ul class="space-y-2 text-sm">
-                                    <li>
-                                        Services
-                                    </li>
-                                    <li>
-                                        Taylor Collison Online
-                                    </li>
-                                    <li>
-                                        Portfolio Management & CGT
-                                    </li>
-                                    <li>
-                                        Meet The Team
-                                    </li>
-                                    <li>
-                                        Taylor Collison Online
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <a href="#" class="text-sm">
-                            Corporate
-                        </a>
-                        <a href="#" class="text-sm">
-                            Institutional & Research
-                        </a>
-                        <a href="#" class="text-sm">
-                            Contact
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden sm:ml-6 lg:block">
-                    <div class="flex items-center space-x-12">
-                        <a href="#"
-                           @click="searchOpen = true; $nextTick(() => { $refs.searchInput.focus() });"
-                           :class="[open || scrolledFromTop || hoverNav ? 'border-black' : 'border-white']"
-                           class="border border-opacity-20 text-opacity-80 inline-flex items-center rounded-lg px-10 py-2 text-sm font-medium">
-                            Search
-                        </a>
-                        <a href="#" class=" text-sm">
-                            Login
-                        </a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex lg:hidden">
-                    <!-- Mobile menu button -->
-                    <button x-on:click="open = ! open" type="button"
-                            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-                            aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <!--
-                          Icon when menu is closed.
-
-                          Menu open: "hidden", Menu closed: "block"
-                        -->
-                        <svg x-show="!open" class="block h-9 w-9" fill="none" viewBox="0 0 24 24"
-                             stroke-width="1" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                        </svg>
-                        <!--
-                          Icon when menu is open.
-
-                          Menu open: "block", Menu closed: "hidden"
-                        -->
-                        <svg x-show="open" class="h-9 w-9 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
-                </div>
+          <div class="flex h-20 items-center justify-between">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <img
+                  :class="[open || scrolledFromTop || hoverNav ? 'hidden' : 'block']"
+                  src="images/logo-white.png"
+                  alt=""
+                  class="h-[29px] w-[201px]"
+                />
+                <img
+                  :class="[open || scrolledFromTop || hoverNav ? 'block' : 'hidden']"
+                  src="images/logo-black.png"
+                  alt=""
+                  class="h-[29px] w-[201px]"
+                />
+              </div>
             </div>
+            <div class="hidden sm:ml-6 lg:block">
+              <div class="flex items-center space-x-12">
+                <div
+                  class="group relative"
+                  @mouseenter="subMenuOpen = true"
+                  @mouseleave="subMenuOpen = false"
+                >
+                  <a href="#" class="text-sm"> Personal Investors </a>
+                  <div
+                    class="fadeIn absolute hidden w-max pt-6 group-hover:block"
+                  >
+                    <ul class="space-y-2 text-sm">
+                      <li>Services</li>
+                      <li>Taylor Collison Online</li>
+                      <li>Portfolio Management & CGT</li>
+                      <li>Meet The Team</li>
+                      <li>Taylor Collison Online</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <a href="#" class="text-sm"> Corporate </a>
+                <a href="#" class="text-sm"> Institutional & Research </a>
+                <a href="#" class="text-sm"> Contact </a>
+              </div>
+            </div>
+            <div class="hidden sm:ml-6 lg:block">
+              <div class="flex items-center space-x-12">
+                <a
+                  href="#"
+                  @click="searchOpen = true; $nextTick(() => { $refs.searchInput.focus() });"
+                  :class="[open || scrolledFromTop || hoverNav ? 'border-black' : 'border-white']"
+                  class="inline-flex items-center rounded-lg border border-opacity-20 px-10 py-2 text-sm font-medium text-opacity-80"
+                >
+                  Search
+                </a>
+                <a href="#" class="text-sm"> Login </a>
+              </div>
+            </div>
+            <div class="-mr-2 flex lg:hidden">
+              <button
+                x-on:click="open = ! open"
+                type="button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+              >
+                <span class="sr-only">Open main menu</span>
+                <svg
+                  x-show="!open"
+                  class="block h-9 w-9"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+                <svg
+                  x-show="open"
+                  class="h-9 w-9 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div x-show="subMenuOpen" class="w-full h-[9.5rem]">
-            <div class="text-white"></div>
+        <div x-show="subMenuOpen" class="h-[9.5rem] w-full">
+          <div class="text-white"></div>
         </div>
-        <!-- Mobile menu, show/hide based on menu state. -->
         <div class="lg:hidden" id="mobile-menu" x-show="open">
-            <div class="space-y-1 px-10 pt-2 pb-3">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="#" class="block px-3 py-2 text-base font-medium">
-                    Personal Investors
-                </a>
-                <a href="#" class="block px-3 py-2 text-base font-medium">
-                    Corporate
-                </a>
-                <a href="#" class="block px-3 py-2 text-base font-medium">
-                    Institutional & Research
-                </a>
-                <a href="#" class="block px-3 py-2 text-base font-medium">
-                    Contact
-                </a>
+          <div class="space-y-1 px-10 pt-2 pb-3">
+            <a href="#" class="block px-3 py-2 text-base font-medium">
+              Personal Investors
+            </a>
+            <a href="#" class="block px-3 py-2 text-base font-medium">
+              Corporate
+            </a>
+            <a href="#" class="block px-3 py-2 text-base font-medium">
+              Institutional & Research
+            </a>
+            <a href="#" class="block px-3 py-2 text-base font-medium">
+              Contact
+            </a>
+          </div>
+          <div class="pt-4 pb-3">
+            <div class="mt-3 space-y-6 px-10">
+              <a
+                href="#"
+                class="block w-full border border-yellow-600 px-6 py-4 text-center font-medium text-yellow-600 hover:text-yellow-700"
+              >
+                Call Adelaide Office
+              </a>
+              <a
+                href="#"
+                class="block w-full border border-yellow-600 px-6 py-4 text-center font-medium text-yellow-600 hover:text-yellow-700"
+              >
+                Call Sydney Office
+              </a>
+              <a
+                href="#"
+                class="block w-full border border-yellow-600 bg-yellow-600 px-6 py-4 text-center font-medium text-white hover:border-yellow-700 hover:bg-yellow-700"
+              >
+                Login
+              </a>
             </div>
-            <div class="pt-4 pb-3">
-                <div class="mt-3 space-y-6 px-10">
-                    <a href="#"
-                       class="block w-full text-center border border-yellow-600 text-yellow-600 px-6 py-4 font-medium hover:text-yellow-700">
-                        Call Adelaide Office
-                    </a>
-                    <a href="#"
-                       class="block w-full text-center border border-yellow-600 text-yellow-600 px-6 py-4 font-medium hover:text-yellow-700">
-                        Call Sydney Office
-                    </a>
-                    <a href="#"
-                       class="block text-white text-center w-full border-yellow-600 border bg-yellow-600 px-6 py-4 font-medium hover:bg-yellow-700 hover:border-yellow-700">
-                        Login
-                    </a>
-                </div>
-            </div>
+          </div>
         </div>
-    </nav>
-</div>
+      </nav>
+    </div>
 
-<div>
-    <main class="">
+    <div>
+      <main class="">
         <!-- Hero section -->
-        <div id="hero" class="relative isolate overflow-hidden ">
-            <img src="images/image753.png" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
-            <div class="absolute inset-0 -z-10 h-full w-full object-cover" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 6.83%, rgba(0, 0, 0, 0.7) 53.42%, rgba(0, 0, 0, 0.4) 100%);
-transform: matrix(-1, 0, 0, 1, 0, 0);"></div>
-            <div class="hidden w-full lg:flex justify-center absolute bottom-[15%]">
-                <div x-on:click="window.scrollTo(0, document.getElementById('hero').offsetHeight);"
-                     class="z-10 cursor-pointer w-11 h-11 border-white border border-2 rounded-full flex items-center justify-center text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
-                    </svg>
-                </div>
+        <div id="hero" class="relative isolate overflow-hidden">
+          <img
+            src="images/image753.png"
+            alt=""
+            class="absolute inset-0 -z-10 h-full w-full object-cover"
+          />
+          <div
+            class="absolute inset-0 -z-10 h-full w-full object-cover"
+            style="
+              background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.7) 6.83%,
+                rgba(0, 0, 0, 0.7) 53.42%,
+                rgba(0, 0, 0, 0.4) 100%
+              );
+              transform: matrix(-1, 0, 0, 1, 0, 0);
+            "
+          ></div>
+          <div
+            class="absolute bottom-[15%] hidden w-full justify-center lg:flex"
+          >
+            <div
+              x-on:click="window.scrollTo(0, document.getElementById('hero').offsetHeight);"
+              class="z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-2 border-white text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                />
+              </svg>
             </div>
+          </div>
 
-            <div class="relative container flex min-h-[583px] lg:min-h-[700px] h-screen items-center">
-                <div class="mt-44 lg:mt-0 mx-auto max-w-[307px] text-center lg:text-left lg:mx-0 md:max-w-[583px] lg:pt-8">
+          <div
+            class="container relative flex h-screen min-h-[583px] items-center lg:min-h-[700px]"
+          >
+            <div
+              class="mx-auto mt-44 max-w-[307px] text-center md:max-w-[583px] lg:mx-0 lg:mt-0 lg:pt-8 lg:text-left"
+            >
+              <h1
+                class="font-garamond text-2.5xl font-bold leading-8 tracking-[-0.02em] text-white md:text-4.5xl md:leading-10"
+                style=""
+              >
+                Taylor Collison is a leading financial services firm with a
+                proud history dating back to 1928.
+              </h1>
 
-                    <h1 class="text-2.5xl font-bold tracking-[-0.02em] text-white md:text-4.5xl leading-8 md:leading-10 font-garamond"
-                        style="">
-                        Taylor Collison is a leading financial services firm with a proud history dating back to 1928.
-                    </h1>
+              <p class="mt-6 hidden text-xl text-white lg:block">
+                We pride ourselves on our independence, offering objective
+                advice to private, corporate and institutional clients across
+                offices in Sydney and Adelaide.
+              </p>
 
-                    <p class="hidden lg:block mt-6 text-xl text-white">
-                        We pride ourselves on our independence, offering objective advice to private, corporate and
-                        institutional clients across offices in Sydney and Adelaide.
-                    </p>
-
-                    <div class="mt-32 md:mt-36 flex items-center gap-x-6 justify-center lg:justify-start">
-                        <a href="#"
-                           class="bg-yellow-600 px-6 py-4 md:text-xl font-medium text-white hover:bg-yellow-700">
-                            Make an inquiry
-                        </a>
-                    </div>
-
-                </div>
-                <!--                <div class="flex justify-center">-->
-                <!--                    <div class="w-10 h-10 border-white border border-2 rounded-full flex items-center justify-center text-white">-->
-                <!--                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">-->
-                <!--                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />-->
-                <!--                        </svg>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-            </div>
-        </div>
-    </main>
-</div>
-
-
-<div id="personal-investors" class="container">
-    <div class="md:h-min md:min-h-screen my-14 md:my-0 py-0 md:py-24 lg:pt-44 lg:pb-12">
-        <div class="relative grid lg:block gap-y-14">
-            <div class="relative order-2 -mx-4">
-                <div class="z-20 bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0">
-                    <div class="aspect-[78/95]">
-                        <img class="w-full object-cover w-full lg:w-[468px] h-full"
-                             src="images/image774.png"
-                             alt="">
-                    </div>
-                </div>
-                <div class="hidden bg-gray-50 z-10 lg:block lg:absolute border border-yellow-500 w-[468px] h-[570px] lg:right-0 transform -translate-x-3.5 -translate-y-3.5">
-                </div>
-            </div>
-
-            <div class="mx-auto grid max-w-7xl lg:grid-cols-2 order-1">
-                <div x-data="{ shown: false }" x-intersect.half.once="shown = true"
-                     :class="shown ? 'fadeInRight' : 'opacity-0' " class="lg:col-start-1 lg:pr-8">
-                    <div class="max-w-2xl lg:max-w-xl">
-                        <h2 class="mt-2 text-3xl font-bold tracking-tight md:text-4.5xl font-garamond">Personal
-                            Investors</h2>
-                        <p class="mt-6 text-base md:text-xl">
-                            Full service stockbroking and advisory services from our dedicated advisor team and some
-                            other
-                            words to make this span a larger section. Here is another sentence for this section to span
-                            further lines down the page. Here is another sentence for this section to span further lines
-                            down the page.
-                        </p>
-                        <dl class=" mt-16 grid max-w-xl grid-cols-2 gap-8 sm:mt-20 xl:mt-16">
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Years</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    70+
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Processed</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    $40
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Transactions</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    57k
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Locations</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    2
-                                </dd>
-                            </div>
-                        </dl>
-
-                        <div class="flex justify-center lg:block mt-16 sm:mt-20 xl:mt-24">
-                            <a href="#"
-                               class="border border-yellow-600 text-yellow-600 px-7 py-3.5 font-medium text-lg text-white hover:text-yellow-700 inline-flex items-center">
-                                Learn more
-                                <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                     viewBox="0 0 24 24"
-                                     stroke-width="2.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container">
-    <div class="md:h-min md:min-h-screen my-14 md:my-0 py-0 md:py-14 lg:py-12">
-        <div class="relative grid lg:block gap-y-14">
-            <div class="relative order-2 -mx-4">
-                <div class="z-20 bg-gray-50 lg:absolute lg:inset-y-0 lg:left-0">
-                    <div class="aspect-[78/95]">
-                        <img class="w-full object-cover w-full lg:w-[468px] h-full"
-                             src="images/image778.png"
-                             alt="">
-                    </div>
-                </div>
-                <div class="hidden bg-gray-50 z-10 lg:block lg:absolute border border-yellow-500 w-[468px] h-[570px] lg:left-0 transform -translate-x-3.5 -translate-y-3.5">
-                </div>
-            </div>
-
-            <div class="mx-auto grid max-w-7xl lg:grid-cols-2 order-1">
-
-                <div>
-                </div>
-                <div x-data="{ shown: false }" x-intersect.half.once="shown = true"
-                     :class="shown ? 'fadeInLeft' : 'opacity-0' " class="lg:pl-8">
-                    <div class="max-w-2xl lg:max-w-xl">
-                        <h2 class="mt-2 text-3xl font-bold tracking-tight md:text-4.5xl font-garamond">
-                            Corporate
-                        </h2>
-                        <p class="mt-6 text-base md:text-xl">
-                            Full service stockbroking and advisory services from our dedicated advisor team and some
-                            other
-                            words to make this span a larger section. Here is another sentence for this section to span
-                            further lines down the page. Here is another sentence for this section to span further lines
-                            down the page.
-                        </p>
-                        <dl class=" mt-16 grid max-w-xl grid-cols-2 gap-8 sm:mt-20 xl:mt-16">
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Years</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    70+
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Processed</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    $40
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Transactions</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    57k
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Locations</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    2
-                                </dd>
-                            </div>
-                        </dl>
-
-                        <div class="flex justify-center lg:block mt-16 sm:mt-20 xl:mt-24">
-                            <a href="#"
-                               class="border border-yellow-600 text-yellow-600 px-7 py-3.5 font-medium text-lg text-white hover:text-yellow-700 inline-flex items-center">
-                                Learn more
-                                <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                     viewBox="0 0 24 24"
-                                     stroke-width="2.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container">
-    <div class="md:h-min md:min-h-screen my-14 md:my-0 py-0 md:py-14 lg:py-12">
-        <div class="relative grid lg:block gap-y-14">
-            <div class="hidden md:block relative order-2 -mx-4">
-                <div class="z-20 bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0">
-                    <div class="aspect-[78/95]">
-                        <img class="w-full object-cover w-full lg:w-[468px] h-full"
-                             src="images/image776.png"
-                             alt="">
-                    </div>
-                </div>
-                <div class="hidden bg-gray-50 z-10 lg:block lg:absolute border border-yellow-500 w-[468px] h-[570px] lg:right-0 transform -translate-x-3.5 -translate-y-3.5">
-                </div>
-            </div>
-
-            <div class="mx-auto grid max-w-7xl lg:grid-cols-2 order-1">
-                <div x-data="{ shown: false }" x-intersect.half.once="shown = true"
-                     :class="shown ? 'fadeInRight' : 'opacity-0' " class="lg:col-start-1 lg:pr-8">
-                    <div class="max-w-2xl lg:max-w-xl">
-                        <h2 class="mt-2 text-3xl font-bold tracking-tight md:text-4.5xl font-garamond">Institutional &
-                            Research</h2>
-                        <p class="mt-6 text-base md:text-xl">
-                            Full service stockbroking and advisory services from our dedicated advisor team and some
-                            other
-                            words to make this span a larger section. Here is another sentence for this section to span
-                            further lines down the page. Here is another sentence for this section to span further lines
-                            down the page.
-                        </p>
-                        <dl class=" mt-16 grid max-w-xl grid-cols-2 gap-8 sm:mt-20 xl:mt-16">
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Years</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    70+
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Processed</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    $40
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Transactions</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    57k
-                                </dd>
-                            </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                <dt class="text-lg md:text-xl">Locations</dt>
-                                <dd class="order-first text-4xl md:text-4.5xl font-semibold tracking-tight font-garamond text-black">
-                                    2
-                                </dd>
-                            </div>
-                        </dl>
-
-                        <div class="flex justify-center lg:block mt-16 sm:mt-20 xl:mt-24">
-                            <a href="#"
-                               class="border border-yellow-600 text-yellow-600 px-7 py-3.5 font-medium text-lg text-white hover:text-yellow-700 inline-flex items-center">
-                                Learn more
-                                <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                     viewBox="0 0 24 24"
-                                     stroke-width="2.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="relative bg-white">
-    <div class="relative z-10 aspect-[78/95] overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/2 lg:w-1/2">
-        <img class="h-full w-full object-cover" src="images/sydney-4337418.png" alt="">
-    </div>
-    <div v x-data="{ shown: false }" x-intersect.half.once="shown = true" :class="shown ? 'fadeInLeft' : 'opacity-0' "
-         class="container relative py-12 sm:py-32 lg:py-40">
-        <div class="md:ml-auto md:w-1/2 md:pl-12 lg:w-1/2 lg:pl-20 lg:pr-0 xl:pl-28">
-            <h2 class="mt-2 text-4xl md:text-4.5xl font-bold tracking-tight font-garamond border-b border-yellow-600 w-max">
-                Our Mission</h2>
-            <p class="mt-8 text-lg">
-                Specialising in institutional private broking and portfolio management services Taylor Collison’s
-                professional team of client advisers is dedicated to helping investors build a portfolio that best suits
-                their individual investment requirements.
-            </p>
-
-            <p class="mt-8 text-lg">
-                Our business is founded on integrity, client confidentiality, service delivery and the strength and
-                quality of our relationships. Taylor Collison takes pride in its total commitment to wealth creation,
-                offering full service to clients.
-            </p>
-
-            <p class="mt-8 text-lg">
-                Our primary allegiance is to our clients, to ensure they recieve objective advice that suits their
-                particular investment objectives and circumstances
-            </p>
-
-            <div class="mt-12">
-                <a href="#"
-                   class="border border-yellow-600 text-yellow-600 px-7 py-3.5 font-semibold text-lg text-white hover:text-yellow-700 inline-flex items-center">
-                    Contact Us
-                    <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                         stroke-width="2.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                    </svg>
+              <div
+                class="mt-32 flex items-center justify-center gap-x-6 md:mt-36 lg:justify-start"
+              >
+                <a
+                  href="#"
+                  class="bg-yellow-600 px-6 py-4 font-medium text-white hover:bg-yellow-700 md:text-xl"
+                >
+                  Make an inquiry
                 </a>
+              </div>
             </div>
+          </div>
         </div>
+      </main>
     </div>
-</div>
 
-
-<footer class="bg-lighter-grey text-light-grey" aria-labelledby="footer-heading">
-    <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto max-w-[1360px] px-6 pb-8 py-20 sm:py-24 lg:px-8 lg:py-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-y-12  xl:gap-14">
-            <div>
-                <!--                        <h3 class="text-sm font-semibold leading-6 text-white">Solutions</h3>-->
-                <ul role="list" class="space-y-3">
-                    <li>
-                        <a href="#" class="text-sm font-bold text-grey hover:text-grey">Home
-                            Page</a>
-                    </li>
-
-                    <li>
-                        <a href="#"
-                           class="text-sm font-bold text-grey hover:text-grey">Contact</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm font-bold text-grey hover:text-grey">Latest
-                            News</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm font-bold text-grey hover:text-grey">About
-                            Us</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm text-grey-light hover:text-grey">About Taylor
-                            Collison</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">Organisational
-                            Structure</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm text-grey-light hover:text-grey">Our History</a>
-                    </li>
-                </ul>
+    <div id="personal-investors" class="container">
+      <div
+        class="my-14 py-0 md:my-0 md:h-min md:min-h-screen md:py-24 lg:pt-44 lg:pb-12"
+      >
+        <div class="relative grid gap-y-14 lg:block">
+          <div class="relative order-2 -mx-4">
+            <div class="z-20 bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0">
+              <div class="aspect-[78/95]">
+                <img
+                  class="h-full w-full w-full object-cover lg:w-[468px]"
+                  src="images/image774.png"
+                  alt=""
+                />
+              </div>
             </div>
+            <div
+              class="z-10 hidden h-[570px] w-[468px] -translate-x-3.5 -translate-y-3.5 transform border border-yellow-500 bg-gray-50 lg:absolute lg:right-0 lg:block"
+            ></div>
+          </div>
 
-            <div>
-                <h3 class="text-sm font-bold  text-grey">Personal investors</h3>
-                <ul role="list" class="mt-3 space-y-3">
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                            Services
-                        </a>
-                    </li>
+          <div class="order-1 mx-auto grid max-w-7xl lg:grid-cols-2">
+            <div
+              x-data="{ shown: false }"
+              x-intersect.half.once="shown = true"
+              :class="shown ? 'fadeInRight' : 'opacity-0' "
+              class="lg:col-start-1 lg:pr-8"
+            >
+              <div class="max-w-2xl lg:max-w-xl">
+                <h2
+                  class="mt-2 font-garamond text-3xl font-bold tracking-tight md:text-4.5xl"
+                >
+                  Personal Investors
+                </h2>
+                <p class="mt-6 text-base md:text-xl">
+                  Full service stockbroking and advisory services from our
+                  dedicated advisor team and some other words to make this span
+                  a larger section. Here is another sentence for this section to
+                  span further lines down the page. Here is another sentence for
+                  this section to span further lines down the page.
+                </p>
+                <dl
+                  class="mt-16 grid max-w-xl grid-cols-2 gap-8 sm:mt-20 xl:mt-16"
+                >
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Years</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      70+
+                    </dd>
+                  </div>
 
-                    <li>
-                        <a href="#" class="text-sm text-grey-light hover:text-grey">
-                            Our personal investors team
-                        </a>
-                    </li>
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Processed</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      $40
+                    </dd>
+                  </div>
 
-                    <li>
-                        <a href="#" class="text-sm text-grey-light hover:text-grey">
-                            Taylor Collison Online (TC Online)
-                        </a>
-                    </li>
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Transactions</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      57k
+                    </dd>
+                  </div>
 
-                    <li>
-                        <a href="#" class="text-sm text-grey-light hover:text-grey">
-                            Portfolio management & CGT
-                        </a>
-                    </li>
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Locations</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      2
+                    </dd>
+                  </div>
+                </dl>
 
-                    <li>
-                        <a href="#" class="text-sm text-grey-light hover:text-grey">
-                            Equity research
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm text-grey-light hover:text-grey">
-                            Downloadable forms & policies
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm text-grey-light hover:text-grey">
-                            Clearing & settlement
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                            Useful links & information
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="space-y-12">
-                <div>
-                    <h3 class="text-sm font-bold text-grey">Institutional & research</h3>
-                    <ul role="list" class="mt-3 space-y-3">
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Our institutional team
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Services
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Current research
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Our research team
-                            </a>
-                        </li>
-                    </ul>
+                <div
+                  class="mt-16 flex justify-center sm:mt-20 lg:block xl:mt-24"
+                >
+                  <a
+                    href="#"
+                    class="inline-flex items-center border border-yellow-600 px-7 py-3.5 text-lg font-medium text-yellow-600 text-white hover:text-yellow-700"
+                  >
+                    Learn more
+                    <svg
+                      class="ml-2 h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="2.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </a>
                 </div>
-                <div>
-                    <h3 class="text-sm font-bold text-grey">Institutional & research</h3>
-                    <ul role="list" class="mt-3 space-y-3">
-                        <li>
-                            <a href="#" class="text-sm text-grey-light hover:text-grey">
-                                Equity research
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm text-grey-light hover:text-grey">
-                                Downloadable forms & policies
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Clearing & settlement
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Useful links & information
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+              </div>
             </div>
-
-            <div>
-                <h3 class="text-sm font-bold text-grey">Corporate</h3>
-                <ul role="list" class="mt-3 space-y-3">
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                            Capabilities
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                            Equity capital markets
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                            Mergers & acquisitions
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                            Additional advisory services
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                            Listed investment companies/trusts
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                            Our Corporate Team
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="space-y-12">
-                <div>
-                    <h3 class="text-sm font-bold  text-grey">Adelaide</h3>
-                    <ul role="list" class="mt-3 space-y-3">
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Level 16, 211 Victoria Square
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Adelaide, South Australia 5000
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm uppercase  text-grey-light hover:text-grey">
-                                Ph (08) 8217 3900
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-grey">Sydney</h3>
-                    <ul role="list" class="mt-3 space-y-3">
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Level 10, 151 Macquarie Street
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Sydney, New South Wales 2000
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-sm  text-grey-light hover:text-grey">
-                                Ph (02) 9377 1500
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
+            <div></div>
+          </div>
         </div>
+      </div>
     </div>
-</footer>
 
-</body>
+    <div class="container">
+      <div
+        class="my-14 py-0 md:my-0 md:h-min md:min-h-screen md:py-14 lg:py-12"
+      >
+        <div class="relative grid gap-y-14 lg:block">
+          <div class="relative order-2 -mx-4">
+            <div class="z-20 bg-gray-50 lg:absolute lg:inset-y-0 lg:left-0">
+              <div class="aspect-[78/95]">
+                <img
+                  class="h-full w-full w-full object-cover lg:w-[468px]"
+                  src="images/image778.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div
+              class="z-10 hidden h-[570px] w-[468px] -translate-x-3.5 -translate-y-3.5 transform border border-yellow-500 bg-gray-50 lg:absolute lg:left-0 lg:block"
+            ></div>
+          </div>
+
+          <div class="order-1 mx-auto grid max-w-7xl lg:grid-cols-2">
+            <div></div>
+            <div
+              x-data="{ shown: false }"
+              x-intersect.half.once="shown = true"
+              :class="shown ? 'fadeInLeft' : 'opacity-0' "
+              class="lg:pl-8"
+            >
+              <div class="max-w-2xl lg:max-w-xl">
+                <h2
+                  class="mt-2 font-garamond text-3xl font-bold tracking-tight md:text-4.5xl"
+                >
+                  Corporate
+                </h2>
+                <p class="mt-6 text-base md:text-xl">
+                  Full service stockbroking and advisory services from our
+                  dedicated advisor team and some other words to make this span
+                  a larger section. Here is another sentence for this section to
+                  span further lines down the page. Here is another sentence for
+                  this section to span further lines down the page.
+                </p>
+                <dl
+                  class="mt-16 grid max-w-xl grid-cols-2 gap-8 sm:mt-20 xl:mt-16"
+                >
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Years</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      70+
+                    </dd>
+                  </div>
+
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Processed</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      $40
+                    </dd>
+                  </div>
+
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Transactions</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      57k
+                    </dd>
+                  </div>
+
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Locations</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      2
+                    </dd>
+                  </div>
+                </dl>
+
+                <div
+                  class="mt-16 flex justify-center sm:mt-20 lg:block xl:mt-24"
+                >
+                  <a
+                    href="#"
+                    class="inline-flex items-center border border-yellow-600 px-7 py-3.5 text-lg font-medium text-yellow-600 text-white hover:text-yellow-700"
+                  >
+                    Learn more
+                    <svg
+                      class="ml-2 h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="2.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div
+        class="my-14 py-0 md:my-0 md:h-min md:min-h-screen md:py-14 lg:py-12"
+      >
+        <div class="relative grid gap-y-14 lg:block">
+          <div class="relative order-2 -mx-4 hidden md:block">
+            <div class="z-20 bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0">
+              <div class="aspect-[78/95]">
+                <img
+                  class="h-full w-full w-full object-cover lg:w-[468px]"
+                  src="images/image776.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div
+              class="z-10 hidden h-[570px] w-[468px] -translate-x-3.5 -translate-y-3.5 transform border border-yellow-500 bg-gray-50 lg:absolute lg:right-0 lg:block"
+            ></div>
+          </div>
+
+          <div class="order-1 mx-auto grid max-w-7xl lg:grid-cols-2">
+            <div
+              x-data="{ shown: false }"
+              x-intersect.half.once="shown = true"
+              :class="shown ? 'fadeInRight' : 'opacity-0' "
+              class="lg:col-start-1 lg:pr-8"
+            >
+              <div class="max-w-2xl lg:max-w-xl">
+                <h2
+                  class="mt-2 font-garamond text-3xl font-bold tracking-tight md:text-4.5xl"
+                >
+                  Institutional & Research
+                </h2>
+                <p class="mt-6 text-base md:text-xl">
+                  Full service stockbroking and advisory services from our
+                  dedicated advisor team and some other words to make this span
+                  a larger section. Here is another sentence for this section to
+                  span further lines down the page. Here is another sentence for
+                  this section to span further lines down the page.
+                </p>
+                <dl
+                  class="mt-16 grid max-w-xl grid-cols-2 gap-8 sm:mt-20 xl:mt-16"
+                >
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Years</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      70+
+                    </dd>
+                  </div>
+
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Processed</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      $40
+                    </dd>
+                  </div>
+
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Transactions</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      57k
+                    </dd>
+                  </div>
+
+                  <div class="flex flex-col gap-y-2">
+                    <dt class="text-lg md:text-xl">Locations</dt>
+                    <dd
+                      class="order-first font-garamond text-4xl font-semibold tracking-tight text-black md:text-4.5xl"
+                    >
+                      2
+                    </dd>
+                  </div>
+                </dl>
+
+                <div
+                  class="mt-16 flex justify-center sm:mt-20 lg:block xl:mt-24"
+                >
+                  <a
+                    href="#"
+                    class="inline-flex items-center border border-yellow-600 px-7 py-3.5 text-lg font-medium text-yellow-600 text-white hover:text-yellow-700"
+                  >
+                    Learn more
+                    <svg
+                      class="ml-2 h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="2.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative bg-white">
+      <div
+        class="relative z-10 aspect-[78/95] overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/2 lg:w-1/2"
+      >
+        <img
+          class="h-full w-full object-cover"
+          src="images/sydney-4337418.png"
+          alt=""
+        />
+      </div>
+      <div
+        v
+        x-data="{ shown: false }"
+        x-intersect.half.once="shown = true"
+        :class="shown ? 'fadeInLeft' : 'opacity-0' "
+        class="container relative py-12 sm:py-32 lg:py-40"
+      >
+        <div
+          class="md:ml-auto md:w-1/2 md:pl-12 lg:w-1/2 lg:pl-20 lg:pr-0 xl:pl-28"
+        >
+          <h2
+            class="mt-2 w-max border-b border-yellow-600 font-garamond text-4xl font-bold tracking-tight md:text-4.5xl"
+          >
+            Our Mission
+          </h2>
+          <p class="mt-8 text-lg">
+            Specialising in institutional private broking and portfolio
+            management services Taylor Collison’s professional team of client
+            advisers is dedicated to helping investors build a portfolio that
+            best suits their individual investment requirements.
+          </p>
+
+          <p class="mt-8 text-lg">
+            Our business is founded on integrity, client confidentiality,
+            service delivery and the strength and quality of our relationships.
+            Taylor Collison takes pride in its total commitment to wealth
+            creation, offering full service to clients.
+          </p>
+
+          <p class="mt-8 text-lg">
+            Our primary allegiance is to our clients, to ensure they recieve
+            objective advice that suits their particular investment objectives
+            and circumstances
+          </p>
+
+          <div class="mt-12">
+            <a
+              href="#"
+              class="inline-flex items-center border border-yellow-600 px-7 py-3.5 text-lg font-medium text-yellow-600 text-white hover:text-yellow-700"
+            >
+              Contact Us
+              <svg
+                class="ml-2 h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="text-light-grey bg-lighter-grey"
+      aria-labelledby="footer-heading"
+    >
+      <h2 id="footer-heading" class="sr-only">Footer</h2>
+      <div
+        class="mx-auto max-w-[1360px] px-6 py-20 pb-8 sm:py-24 lg:px-8 lg:py-24"
+      >
+        <div
+          class="grid grid-cols-1 gap-y-12 md:grid-cols-2 xl:grid-cols-5 xl:gap-14"
+        >
+          <div>
+            <ul role="list" class="space-y-3">
+              <li>
+                <a href="#" class="text-sm font-bold text-grey hover:text-grey"
+                  >Home Page</a
+                >
+              </li>
+
+              <li>
+                <a href="#" class="text-sm font-bold text-grey hover:text-grey"
+                  >Contact</a
+                >
+              </li>
+
+              <li>
+                <a href="#" class="text-sm font-bold text-grey hover:text-grey"
+                  >Latest News</a
+                >
+              </li>
+
+              <li>
+                <a href="#" class="text-sm font-bold text-grey hover:text-grey"
+                  >About Us</a
+                >
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey"
+                  >About Taylor Collison</a
+                >
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey"
+                  >Organisational Structure</a
+                >
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey"
+                  >Our History</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-grey">Personal investors</h3>
+            <ul role="list" class="mt-3 space-y-3">
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Services
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Our personal investors team
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Taylor Collison Online (TC Online)
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Portfolio management & CGT
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Equity research
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Downloadable forms & policies
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Clearing & settlement
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Useful links & information
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-12">
+            <div>
+              <h3 class="text-sm font-bold text-grey">
+                Institutional & research
+              </h3>
+              <ul role="list" class="mt-3 space-y-3">
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Our institutional team
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Services
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Current research
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Our research team
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-grey">
+                Institutional & research
+              </h3>
+              <ul role="list" class="mt-3 space-y-3">
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Equity research
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Downloadable forms & policies
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Clearing & settlement
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Useful links & information
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-grey">Corporate</h3>
+            <ul role="list" class="mt-3 space-y-3">
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Capabilities
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Equity capital markets
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Mergers & acquisitions
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Additional advisory services
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Listed investment companies/trusts
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-sm text-grey-light hover:text-grey">
+                  Our Corporate Team
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-12">
+            <div>
+              <h3 class="text-sm font-bold text-grey">Adelaide</h3>
+              <ul role="list" class="mt-3 space-y-3">
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Level 16, 211 Victoria Square
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Adelaide, South Australia 5000
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="text-sm uppercase text-grey-light hover:text-grey"
+                  >
+                    Ph (08) 8217 3900
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-grey">Sydney</h3>
+              <ul role="list" class="mt-3 space-y-3">
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Level 10, 151 Macquarie Street
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Sydney, New South Wales 2000
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-sm text-grey-light hover:text-grey">
+                    Ph (02) 9377 1500
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
